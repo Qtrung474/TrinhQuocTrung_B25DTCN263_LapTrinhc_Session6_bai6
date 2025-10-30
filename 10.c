@@ -1,16 +1,34 @@
 #include <stdio.h>
-
+#include <stdlib.h> 
 
 int main() {
-    char s[100];
-    int i;
+    int number;
+    int digit;
+    int temp_number;
+
     printf("Enter any integer: ");
-    scanf("%s", s);
-    printf("The digits are: ");
-    for ( i = 0; s[i] != '\0'; i++) {
-        if (s[i] == '-')
-            continue;
-        printf("%c ", s[i]);
+    
+    if (scanf("%d", &number) != 1) {
+        printf("Invalid input. Please enter a valid integer.\n");
+        return 1;
     }
+
+    if (number == 0) {
+        printf("The digits are: 0\n");
+        return 0;
+    }
+
+    temp_number = abs(number);
+
+    printf("The digits are (in reverse order): ");
+    
+    while (temp_number > 0) {
+        digit = temp_number % 10;
+        printf("%d ", digit);     
+        temp_number /= 10;        
+    }
+    
+    printf("\n"); 
+
     return 0;
 }
